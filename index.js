@@ -9,6 +9,10 @@ import { fileURLToPath } from 'node:url'
 const PROVIDER_NAME = 'resume-foreign-session'
 const BUNDLED_SKILL_RANK = 600
 const INVOCATION = Object.freeze({ modelInvocable: true, userInvocable: true })
+const RESOURCE_BASE = Object.freeze({
+  kind: 'directory',
+  path: fileURLToPath(new URL('./skills/shared/resume-session/', import.meta.url)),
+})
 
 const specifications = Object.freeze([
   Object.freeze({
@@ -28,7 +32,7 @@ const candidates = specifications.map((specification) => {
     invocation: INVOCATION,
     provider: PROVIDER_NAME,
     source: 'bundled',
-    resourceBase: Object.freeze({ kind: 'directory', path: fileURLToPath(directoryUrl) }),
+    resourceBase: RESOURCE_BASE,
     rank: BUNDLED_SKILL_RANK,
     locator: new URL('SKILL.md', directoryUrl),
   })

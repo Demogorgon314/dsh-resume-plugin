@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict'
+import { access } from 'node:fs/promises'
+import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import test from 'node:test'
 
@@ -41,12 +43,14 @@ test('registers and loads both bundled skills with package-local resources', asy
     assert.equal(candidate.source, 'bundled')
     assert.equal(candidate.rank, 600)
     assert.equal(candidate.resourceBase.kind, 'directory')
-    assert.equal(candidate.resourceBase.path, fileURLToPath(new URL(`../skills/${candidate.name}/`, import.meta.url)))
+    assert.equal(candidate.resourceBase.path, fileURLToPath(new URL('../skills/shared/resume-session/', import.meta.url)))
+    await access(join(candidate.resourceBase.path, 'CORE.md'))
+    await access(join(candidate.resourceBase.path, 'session_reader.py'))
 
     const definition = await provider.get(candidate)
     assert.equal(definition.name, candidate.name)
     assert.equal(definition.resourceBase, candidate.resourceBase)
-    assert.match(definition.content, /shared\/resume-session\/CORE\.md/u)
+    assert.match(definition.content, /Read `CORE\.md` from this skill's base directory/u)
     assert.match(definition.content, /continue in the current DeepSeek Harness session/u)
   }
 })

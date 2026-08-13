@@ -4,7 +4,7 @@ Use this workflow when the user wants to continue work recorded by Claude Code.
 
 The optional session reference is the text accompanying this skill invocation. It may be `latest`, a native UUID, a transcript path, or words from the session title. When the user supplies no reference, use `latest`.
 
-Resolve `../shared/resume-session/CORE.md` against this skill's base directory shown in `<skill_resources>`. Read it completely and follow it with:
+Read `CORE.md` from this skill's base directory shown in `<skill_resources>`. Read it completely and follow it with:
 
 - tool: `claude`
 - reference: the optional session reference, unchanged
