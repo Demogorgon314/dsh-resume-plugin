@@ -1,0 +1,3 @@
+- insert:
+    - id: resume-foreign-session
+      name: dsh-resume-plugin

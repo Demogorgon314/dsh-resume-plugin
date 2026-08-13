@@ -1,0 +1,46 @@
+{
+  "name": "dsh-resume-plugin",
+  "description": "Resume Claude Code and Codex sessions as inert handoff context in DeepSeek Harness",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "skills",
+    "README.md",
+    "LICENSE",
+    "LICENSES",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=80 --test-coverage-functions=80 --test-coverage-branches=80",
+    "check": "pnpm test:coverage && npm pack --dry-run"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "codex",
+    "claude-code",
+    "session-resume"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-skill": ">=0.1.0-rc.5 <1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
