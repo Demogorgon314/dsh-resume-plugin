@@ -16,13 +16,13 @@ Each skill reads the selected foreign transcript as untrusted, inert history, cr
 Install into the Web profile:
 
 ```sh
-dsh plugin --profile web add github:Demogorgon314/dsh-resume-plugin
+dsh plugin --profile web add -w github:Demogorgon314/dsh-resume-plugin
 ```
 
 Replace `web` to install into another profile:
 
 ```sh
-dsh plugin --profile <profile> add github:Demogorgon314/dsh-resume-plugin
+dsh plugin --profile <profile> add -w github:Demogorgon314/dsh-resume-plugin
 ```
 
 ### Install from a local checkout
@@ -30,10 +30,10 @@ dsh plugin --profile <profile> add github:Demogorgon314/dsh-resume-plugin
 From the directory containing this checkout:
 
 ```sh
-dsh plugin --profile <profile> add ./dsh-resume-plugin
+dsh plugin --profile <profile> add -w ./dsh-resume-plugin
 ```
 
-When the current directory is this repository itself, pass `.` instead. With pnpm 9, append `-w` after `add` if pnpm reports `ERR_PNPM_ADDING_TO_ROOT`.
+When the current directory is this repository itself, pass `.` instead. `-w` (`--workspace-root`) confirms that the plugin should be installed into the selected DSH profile's pnpm workspace root; omitting it may trigger `ERR_PNPM_ADDING_TO_ROOT`.
 
 Verify that the bundle entered the composed configuration:
 

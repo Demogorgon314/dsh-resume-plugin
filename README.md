@@ -16,13 +16,13 @@
 安装到 Web profile：
 
 ```sh
-dsh plugin --profile web add github:Demogorgon314/dsh-resume-plugin
+dsh plugin --profile web add -w github:Demogorgon314/dsh-resume-plugin
 ```
 
 也可以替换 `web`，安装到其他 profile：
 
 ```sh
-dsh plugin --profile <profile> add github:Demogorgon314/dsh-resume-plugin
+dsh plugin --profile <profile> add -w github:Demogorgon314/dsh-resume-plugin
 ```
 
 ### 从本地源码安装
@@ -30,10 +30,10 @@ dsh plugin --profile <profile> add github:Demogorgon314/dsh-resume-plugin
 在包含本仓库的父目录中执行：
 
 ```sh
-dsh plugin --profile <profile> add ./dsh-resume-plugin
+dsh plugin --profile <profile> add -w ./dsh-resume-plugin
 ```
 
-如果当前目录就是本仓库，请将路径改为 `.`。如果 pnpm 9 报告 `ERR_PNPM_ADDING_TO_ROOT`，请在 `add` 后附加 `-w`。
+如果当前目录就是本仓库，请将路径改为 `.`。`-w`（`--workspace-root`）表示确认将插件安装到所选 DSH profile 的 pnpm workspace 根目录；省略它可能触发 `ERR_PNPM_ADDING_TO_ROOT`。
 
 检查 bundle 是否已经进入配置：
 
